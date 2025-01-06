@@ -1,8 +1,21 @@
 
+global hp, xp, money
 hp = 100
 xp = 0
-money=0
+money =100
 
+def add_hp(amount):
+    global hp
+    hp += amount
+    if hp > 100:
+        hp = 100
+
+def add_hp2(amount):
+    global hp
+    if hp+amount > 100:
+        hp = 100
+    else:
+        hp += amount
 def stats():
     print(f"### HP {hp} ### XP {xp} ### {money} ###")
 
@@ -16,6 +29,7 @@ def welcome_screen():
     print("Cokoliv jiného - ukončit hru")
 
 def tavern():
+    global hp,money
     print("-----------------------")
     print("      Jsi v krčmě      ")
     print("-----------------------")
@@ -29,11 +43,26 @@ def tavern():
 
     choice = input("Vyber z menu: ")
     if int(choice) == 1:
-        print("Koupil jsis báječné pivo")
+        if money < 20:
+            print("Nemáš dostatek peněz")
+        else:
+            print("Koupil jsis báječné pivo")
+        money -= 20
+        hp += 5
+
     elif int(choice) == 2:
-        print("Koupil jsis hnusnou polévku")
+        if money <30:
+            print("Nemáš dost peněz")
+        else:print("Koupil jsis hnusnou polévku")
+        money -= 30
+        hp += 6
+
     elif int(choice) == 3:
-        print("Dostal jsi před sebe půlku divočáka")
+        if money <50:
+           print("Nemáš dost peněz")
+        else:print("Dostal jsi před sebe půlku divočáka")
+        money -= 50
+        hp += 50
 
     stats()
     crossroad()
@@ -70,3 +99,4 @@ def main():
 
 
 main()
+
