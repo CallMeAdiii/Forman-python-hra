@@ -1,9 +1,10 @@
 
 hp = 100
 xp = 0
+money=0
 
 def stats():
-    print(f"### HP {hp} ### XP {xp} ###")
+    print(f"### HP {hp} ### XP {xp} ### {money} ###")
 
 def welcome_screen():
     print("########################")
